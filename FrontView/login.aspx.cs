@@ -15,8 +15,13 @@ public partial class FrontView_login : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         string password = WebConfigurationManager.AppSettings["superadmin"];
-        if (txtPassword.ToString().Trim() == password && txtUser.ToString().Trim() == "superadmin")
+        if (txtPassword.Text.ToString().Trim().Equals(password.Trim()) && txtUser.Text.ToString().Trim().Equals("superadmin"))
+        {
             Response.Redirect("Dashboard.aspx");
-        
+        }
+        else
+        {
+            Response.Redirect("login.aspx");
+        }
     }
 }

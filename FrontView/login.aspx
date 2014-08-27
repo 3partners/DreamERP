@@ -5,7 +5,18 @@
 <html lang="en">
 
 <head>
-
+    <script type="text/javascript">
+   $('#test_modal').modal({
+        backdrop: true,
+        keyboard: true,
+        show: false 
+    }).css({
+        width: '30%',
+        'margin-left': function () {
+            return -($(this).width() / 2);
+        }
+    });
+</script>
     <meta charset="utf-8">
     <meta httSB Admin 2 - Bootstrap Admin Theme</title>
 
@@ -26,14 +37,6 @@
 
     <!-- Custom Fonts -->
     <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -49,12 +52,10 @@
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <asp:TextBox runat="server" CssClass="form-control" ID="txtUser"  TextMode="SingleLine"></asp:TextBox>
-                                    <%--<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>--%>
+                                    <asp:TextBox runat="server" CssClass="form-control" ID="txtUser"  TextMode="SingleLine"></asp:TextBox>                                    
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" TextMode="Password"></asp:TextBox>
-                                    <%--<input class="form-control" placeholder="Password" name="password" type="password" value="">--%>
+                                    <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" TextMode="Password"></asp:TextBox>                                    
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -62,16 +63,35 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <asp:Button runat="server"  id="btnLogin" 
-                                    CssClass="btn btn-lg btn-success btn-block" Text="Login" 
-                                    onclick="btnLogin_Click"/>
-                                <!--<a href="Dashboard.aspx" class="btn btn-lg btn-success btn-block">Login</a>-->
+                                <asp:Button runat="server"  id="btnLogin" CssClass="btn btn-lg btn-success btn-block" Text="Login" onclick="btnLogin_Click"/>                                
+                                <div class="form-group">                                    
+                                    <a type="button" class="btn" style="width:100%;" href="#test_modal" data-toggle="modal">Sign Up!!</a>                                                                        
+                                    <asp:HyperLink class="btn" ID="HyperLink3" runat="server" Text ="Forgot Password ?"></asp:HyperLink>                                    
+                                </div>                              
                             </fieldset>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="test_modal" style="left:20%;right:20%;top:20%;bottom:20%;background-color:White">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3>Register Now</h3>
+      </div>
+      <div class="form-horizontal">
+           <div class="control-group">
+            <label for="name" class="control-label"><p class="text-info">Name&nbsp;<i class="icon-star"></i></p></label>
+            <div class="controls">
+                <input type="text" id="name" placeholder="Enter your name" class="span3">
+            </div>
+      </div>
+      <div class="modal-footer" style="float:left">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary">Save Changes</a>
+      </div>
     </div>
 
     <!-- jQuery Version 1.11.0 -->
@@ -85,6 +105,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../Scripts/sb-admin-2.js"></script>
+     <script src="../Scripts/bootstrap-modal.js"></script>
+     
 </form>
 </body>
 
